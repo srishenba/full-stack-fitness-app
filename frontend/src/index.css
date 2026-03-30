@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --teal-primary: #14b8a6;
+  --teal-secondary: #0f766e;
+  --neon-blue: #3b82f6;
+  --neon-cyan: #22d3ee;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-slate-100 antialiased font-sans;
+    overflow-x: hidden;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(20, 184, 166, 0.1);
+}
+
+.teal-shadow {
+  box-shadow: 0 0 15px rgba(20, 184, 166, 0.2);
+}
+
+.teal-border {
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.teal-glow-hover:hover {
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+}
+
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.6;
+}
+
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(13, 148, 136, 0.1) 0%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: -1;
+}
+
+.glow-btn {
+  @apply bg-teal-600 text-white font-bold transition-all duration-300;
+  box-shadow: 0 0 10px rgba(20, 184, 166, 0.4);
+}
+
+.glow-btn:hover {
+  @apply bg-teal-500 scale-[1.05];
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.7);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #134e4a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #14b8a6;
+}
+
+.input-glow-focus:focus {
+  @apply border-teal-500/50 bg-teal-500/5;
+  box-shadow: 0 0 15px rgba(20, 184, 166, 0.2);
+}
+
+.bg-teal-gradient {
+  background: linear-gradient(135deg, #008080 0%, #006666 50%, #004d4d 100%);
+}
+
+.teal-input {
+  @apply bg-white/10 border border-white/30 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-white/60 transition-all w-full;
+}
+
+.teal-button {
+  @apply w-full py-5 rounded-xl bg-[#00b3b3] hover:bg-[#008080] text-white font-bold uppercase tracking-widest text-sm transition-all shadow-[0_15px_30_rgba(0,179,179,0.3)] disabled:opacity-50;
+}
+
+@keyframes blinkEffect {
+  0% { background: rgba(255, 255, 255, 0.03); }
+  50% { background: rgba(34,197,94,0.2); box-shadow: 0 0 30px rgba(34,197,94,0.8); }
+  100% { background: rgba(255, 255, 255, 0.03); }
+}
+
+.active-blink {
+  animation: blinkEffect 0.4s ease;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
+  100% { transform: translateX(0); }
+}
+
+.animate-shake {
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}

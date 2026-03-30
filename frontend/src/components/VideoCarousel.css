@@ -1,0 +1,87 @@
+cc.ag-video-carousel-container {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  /* Hack to break out of max-width containers and be true full-width */
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000000;
+  cursor: pointer;
+  display: block;
+}
+
+.ag-video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ag-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.ag-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 5rem;
+  pointer-events: none;
+}
+
+.ag-video-title {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+.ag-video-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ag-video-dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ag-video-dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.ag-video-dot.active {
+  width: 32px;
+  background-color: #008080;
+  box-shadow: 0 0 10px rgba(0, 128, 128, 0.8);
+}

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEAL MOVE</title>
+  <link rel="stylesheet" href="style.css">
+
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  
+</head>
+
+
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-light shadow-sm">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="./Assets/download (1).png" alt="MEALMOVE Logo">
+      <span class="fw-bold logo-text">MEAL MOVE</span>
+    </a>
+
+    <div class="d-flex align-items-center gap-3">
+      <!-- Search Icon -->
+      <button class="btn btn-link p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchPanel" title="Search">
+        <i class="bi bi-search fs-4"></i>
+      </button>
+
+
+
+  <!-- Login Button -->
+  <a href="login.html" class="btn btn-outline-light btn-sm">Login</a>
+
+  <!-- Sign Up / Register Button -->
+  <a href="signup.html" class="btn btn-light btn-sm text-primary">SignUp</a>
+
+  
+
+      <!-- Right Side Menu Button -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="offcanvas" data-bs-target="#rightMenu" aria-controls="rightMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Right Side Offcanvas Menu -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="rightMenu" aria-labelledby="rightMenuLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="rightMenuLabel"></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body p-0">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><a href="index.html" class="text-decoration-none">Home</a></li>
+      <li class="list-group-item"><a href="dashboard.html" class="text-decoration-none">Dashboard</a></li>
+      <li class="list-group-item"><a href="#" class="text-decoration-none">Fitness Tracking</a></li>
+      <li class="list-group-item"><a href="#" class="text-decoration-none">Nutrition Planning</a></li>
+      <li class="list-group-item"><a href="#" class="text-decoration-none">AI Assistant</a></li>
+      <li class="list-group-item"><a href="#" class="text-decoration-none">Progress Report</a></li>
+      <li class="list-group-item"><a href="#" class="text-decoration-none">Notifications</a></li>
+      <li class="list-group-item"><a href="#" class="text-decoration-none">Profile</a></li>
+      <li class="list-group-item"><a href="#" class="text-decoration-none">Logout</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Search Offcanvas -->
+<div class="offcanvas offcanvas-top" tabindex="-1" id="searchPanel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Search</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <input type="text" class="form-control" placeholder="Search here...">
+  </div>
+</div>
+
+<!-- Carousel Section -->
+<div class="container my-4">
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+  
+
+    <!-- Carousel Section -->
+<div class="container my-4">
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-inner rounded-4 overflow-hidden">
+
+      <!-- Video 1 -->
+      <div class="carousel-item active">
+        <video class="d-block w-100 hero-video" autoplay muted loop playsinline>
+          <source src="./Assets/video.1.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="carousel-item">
+        <video class="d-block w-100 hero-video" autoplay muted loop playsinline>
+          <source src="./Assets/video.2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="carousel-item">
+        <video class="d-block w-100 hero-video" autoplay muted loop playsinline>
+          <source src="./Assets/video.3.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="carousel-item">
+        <video class="d-block w-100 hero-video" autoplay muted loop playsinline>
+          <source src="./Assets/video.4.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+
+    
+  </div>
+</div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+
+  </div>
+</div>
+
+
+
+<section class="nutrition-tips container my-5">
+  <h2 class="text-center mb-2"> </h2>
+  <p class="text-center text-muted mb-4">Small changes, big health results</p>
+
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="tip-card">
+        <h5>💧 Drink More Water</h5>
+        <p>Start your day with 1 glass of water. Boosts metabolism & focus.</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="tip-card">
+        <h5>🥗 Eat the Rainbow</h5>
+        <p>Add colorful veggies & fruits for vitamins and minerals.</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="tip-card">
+        <h5>🍳 Protein Every Meal</h5>
+        <p>Eggs, pulses, paneer help muscle recovery & fullness.</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="tip-card">
+        <h5>⏰ Don’t Skip Breakfast</h5>
+        <p>Healthy breakfast = better energy & mood.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="container my-5">
+  <h2 class="text-center mb-4 fw-bold">What MEAL MOVE Does</h2>
+
+  <div class="row g-4 text-center">
+    <div class="col-md-3">
+      <div class="p-4 shadow rounded-4 h-100">
+        <i class="bi bi-activity fs-1 text-success"></i>
+        <h5 class="mt-3">Fitness Tracking</h5>
+        <p>Track your daily workouts and stay consistent.</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="p-4 shadow rounded-4 h-100">
+        <i class="bi bi-egg-fried fs-1 text-success"></i>
+        <h5 class="mt-3">Nutrition Planning</h5>
+        <p>Personalized meal plans for your body goals.</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="p-4 shadow rounded-4 h-100">
+        <i class="bi bi-robot fs-1 text-success"></i>
+        <h5 class="mt-3">AI Assistant</h5>
+        <p>Get smart food & fitness suggestions.</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="p-4 shadow rounded-4 h-100">
+        <i class="bi bi-graph-up-arrow fs-1 text-success"></i>
+        <h5 class="mt-3">Progress Reports</h5>
+        <p>See your growth with weekly reports.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="container my-5">
+  <h2 class="text-center mb-4 fw-bold">How It Works</h2>
+
+  <div class="row g-4 text-center">
+    <div class="col-md-4">
+      <div class="p-4 border rounded-4 h-100">
+        <h4>1️⃣ Sign Up</h4>
+        <p>Create your free MEAL MOVE account.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="p-4 border rounded-4 h-100">
+        <h4>2️⃣ Enter Details</h4>
+        <p>Tell us your age, weight, goals & preferences.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="p-4 border rounded-4 h-100">
+        <h4>3️⃣ Get Your Plan</h4>
+        <p>Receive personalized diet & fitness plans.</p>
+      </div>
+    </div>
+  </div>
+</section>
+   
+
+<section class="container-fluid bg-success text-white py-5 mt-5">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-3">Start Your Healthy Journey Today 💚</h2>
+    <p class="mb-4">Join MEAL MOVE and take control of your fitness & nutrition.</p>
+    <a href="signup.html" class="btn btn-light btn-lg fw-bold me-2">Get Started</a>
+    <a href="login.html" class="btn btn-outline-light btn-lg">Login</a>
+  </div>
+</section>
+
+
+<footer class="bg-dark text-white mt-5 pt-4 pb-3">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4 mb-3">
+        <h5>MEAL MOVE</h5>
+        <p>Your smart fitness & nutrition partner.</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h6>Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="text-decoration-none text-white">Home</a></li>
+          <li><a href="login.html" class="text-decoration-none text-white">Login</a></li>
+          <li><a href="signup.html" class="text-decoration-none text-white">Sign Up</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h6>Follow Us</h6>
+        <i class="bi bi-instagram fs-4 me-2"></i>
+        <i class="bi bi-whatsapp fs-4 me-2"></i>
+        <i class="bi bi-facebook fs-4"></i>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-3">
+      <small>© 2026 MEAL MOVE. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Login Button -->
+<a href="login.html" class="btn btn-outline-light btn-sm">Login</a>
+<!-- signup  Button -->
+<a href="sign up.html" class="btn btn-outline-light btn-sm">sign up</a>
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

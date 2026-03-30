@@ -1,0 +1,343 @@
+/* Root Theme Colors */
+:root {
+  --primary: #0F766E;     /* Teal Green */
+  --secondary: #84CC16;   /* Lime Green */
+  --bg: #F7FDF9;          /* Soft mint white */
+  --text-dark: #052E2B;   /* Dark teal text */
+  --accent: #10B981;      /* Emerald hover */
+  --active: #2563EB;      /* Royal Blue active menu */
+}
+
+/* Body */
+body {
+  background-color: var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(135deg, #0F766E, #34D399);
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Logo text */
+.logo-text {
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Remove focus blink */
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.btn:focus,
+.btn:active {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Navbar toggler icon */
+.navbar-toggler {
+  border: none !important;
+}
+.navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* Logo image */
+.navbar-brand img {
+  width: 90px;
+  height: 90px;
+  background: transparent !important;
+  mix-blend-mode: multiply;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+/* Offcanvas menu text */
+.offcanvas .list-group-item a {
+  color: var(--text-dark);
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+/* Hover effect */
+.offcanvas .list-group-item a:hover {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+/* Active menu */
+.offcanvas .list-group-item a.active {
+  color: var(--active);
+  font-weight: 600;
+}
+
+/* Offcanvas background */
+.offcanvas {
+  background: var(--bg);
+}
+
+.list-group-item {
+  background: transparent;
+  border: none;
+}
+
+/* Offcanvas backdrop */
+.offcanvas-backdrop {
+  opacity: 0.3 !important;
+}
+
+/* Search Panel */
+.offcanvas-top {
+  background-color: var(--bg);
+}
+.offcanvas-top input.form-control {
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+}
+
+/* Carousel */
+.hero-img {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(5, 46, 43, 0.7);
+  border-radius: 50%;
+  padding: 12px;
+}
+.hero-video-box {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) saturate(1.1);
+}
+
+/* Gradient overlay for classy look */
+.hero-video-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+}
+
+/* Text overlay */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+}
+
+.video-overlay h2 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.video-overlay p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+/* Full width hero video below navbar */
+.hero-video-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-video-box {
+  position: relative;
+  width: 100%;
+  height: 70vh;              /* Desktop height */
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: 0;         /* Full width look */
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+/* Pinterest iframe full cover */
+.hero-video-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Dark overlay for classy cinematic look */
+.hero-video-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.45), rgba(0,0,0,0.2));
+  z-index: 1;
+}
+
+/* Text overlay on video */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 8%;
+  color: #ffffff;
+}
+
+.video-overlay h2 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.video-overlay p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .hero-video-box {
+    height: 50vh;
+    min-height: 280px;
+  }
+
+  .video-overlay h2 {
+    font-size: 26px;
+  }
+
+  .video-overlay p {
+    font-size: 14px;
+  }
+}
+.hero-video-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-video-box {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px);  /* Navbar height minus */
+  min-height: 520px;          /* Desktop big look */
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.hero-video {
+  height: 500px;
+  object-fit: cover;
+}
+  
+
+/* Force iframe to cover full hero */
+.hero-video-box iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+}
+
+/* Overlay */
+.hero-video-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+  z-index: 1;
+}
+
+/* Text overlay */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 10%;
+  color: #ffffff;
+}
+
+.video-overlay h2 {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.video-overlay p {
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-video-box {
+    height: 55vh;
+    min-height: 300px;
+  }
+
+  .video-overlay h2 {
+    font-size: 26px;
+  }
+}
+.nutrition-tips h2 {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.tip-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tip-card h5 {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+
+.tip-card p {
+  color: #475569;
+  font-size: 14px;
+  margin: 0;
+}
+
+.tip-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+

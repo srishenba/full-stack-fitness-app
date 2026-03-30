@@ -1,0 +1,150 @@
+/* Grid Layout */
+.ag-tips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row on desktop */
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Gradient Border Wrapper */
+.ag-tip-card-wrapper {
+  position: relative;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.4), rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.4));
+  border-radius: 1.5rem;
+  padding: 1px; /* The thickness of the subtle gradient border */
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Glow Effect Element */
+.ag-tip-card-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.8), rgba(99, 102, 241, 0.8), rgba(168, 85, 247, 0.8));
+  filter: blur(25px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+/* Glassmorphism Inner Card */
+.ag-tip-card-glass {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.65); /* Transparency */
+  backdrop-filter: blur(25px); /* Strong glass blur */
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: calc(1.5rem - 1px); /* Match outer wrapper minus border */
+  padding: 2.5rem 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+/* Hover Animation (Scale + Glow) */
+.ag-tip-card-wrapper:hover {
+  transform: translateY(-8px) scale(1.02); /* Scale and float */
+  box-shadow: 0 20px 45px rgba(20, 184, 166, 0.25);
+}
+
+/* Illuminate glow from underneath on hover */
+.ag-tip-card-wrapper:hover::before {
+  opacity: 1; /* Glow activate */
+}
+
+/* Typography & Content Layout */
+.ag-tip-card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 1.25rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+.ag-tip-card-wrapper:hover .ag-tip-card-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.ag-tip-card-title {
+  font-family: 'Outfit', sans-serif; /* or Poppins/Montserrat */
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.01em;
+}
+
+.ag-tip-card-text {
+  font-family: 'Outfit', sans-serif;
+  color: #475569;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Responsive Scaling */
+@media (max-width: 1024px) {
+  .ag-tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .ag-tips-grid {
+    grid-template-columns: 1fr; /* 1 per row mobile */
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  .ag-tip-card-glass {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Local Skeleton Styles */
+.skeleton {
+  pointer-events: none;
+}
+.ag-skeleton-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.25rem;
+  animation: pulse-glass 1.5s infinite;
+}
+.ag-skeleton-title {
+  width: 60%;
+  height: 24px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.25rem;
+  animation: pulse-glass 1.5s infinite;
+}
+.ag-skeleton-line {
+  width: 100%;
+  height: 16px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  margin-bottom: 0.75rem;
+  animation: pulse-glass 1.5s infinite;
+}
+.ag-skeleton-line.short {
+  width: 80%;
+}
+
+@keyframes pulse-glass {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}

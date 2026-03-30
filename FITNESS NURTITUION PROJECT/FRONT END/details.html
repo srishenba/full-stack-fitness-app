@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Complete Profile | MEAL MOVE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container my-5">
+  <div class="mx-auto shadow p-4 rounded-4 bg-white" style="max-width:500px;">
+
+    <h4 class="text-center fw-bold mb-4">Complete Your Profile 💪</h4>
+
+    <form id="detailsForm">
+
+      <!-- Basic Info -->
+      <h6 class="fw-bold mt-2"></h6>
+
+      <div class="mb-3">
+        <input type="number" id="age" class="form-control" placeholder="Age">
+        <div class="text-danger small d-none" id="ageError"></div>
+      </div>
+
+      <div class="mb-3">
+        <select id="gender" class="form-control">
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+        <div class="text-danger small d-none" id="genderError"></div>
+      </div>
+
+      <div class="mb-3">
+        <input type="number" id="weight" class="form-control" placeholder="Weight (kg)">
+        <div class="text-danger small d-none" id="weightError"></div>
+      </div>
+
+      <div class="mb-3">
+        <input type="number" id="height" class="form-control" placeholder="Height (cm)">
+        <div class="text-danger small d-none" id="heightError"></div>
+      </div>
+
+      <!-- Health Info -->
+      <h6 class="fw-bold mt-4">
+
+      <div class="mb-3">
+        <input type="text" id="healthIssues" class="form-control" placeholder="Existing Health Issues (Optional)">
+      </div>
+
+      <div class="mb-3">
+        <input type="text" id="allergies" class="form-control" placeholder="Allergies (Optional)">
+      </div>
+
+      <!-- Lifestyle -->
+      <h6 class="fw-bold mt-4">
+
+      <div class="mb-3">
+        <select id="activityLevel" class="form-control">
+          <option value="">Select Activity Level</option>
+          <option>Sedentary</option>
+          <option>Lightly Active</option>
+          <option>Moderately Active</option>
+          <option>Very Active</option>
+        </select>
+        <div class="text-danger small d-none" id="activityError"></div>
+      </div>
+
+      <!-- Goal -->
+      <h6 class="fw-bold mt-4"></h6>
+
+      <div class="mb-3">
+        <select id="goal" class="form-control">
+          <option value="">Select Goal</option>
+          <option>Weight Loss</option>
+          <option>Weight Gain</option>
+          <option>Maintain Weight</option>
+          <option>Muscle Gain</option>
+        </select>
+        <div class="text-danger small d-none" id="goalError"></div>
+      </div>
+
+      <div class="mb-3">
+        <select id="targetArea" class="form-control">
+          <option value="">Target Area (Optional)</option>
+          <option>Belly Fat</option>
+          <option>Thigh Fat</option>
+          <option>Arms</option>
+          <option>Full Body</option>
+        </select>
+      </div>
+
+      <!-- Food -->
+      <h6 class="fw-bold mt-4"></h6>
+
+      <div class="mb-3">
+        <select id="foodType" class="form-control">
+          <option value="">Food Preference</option>
+          <option>Vegetarian</option>
+          <option>Non-Vegetarian</option>
+          <option>Vegan</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <input type="text" id="foodDislikes" class="form-control" placeholder="Food Dislikes (Optional)">
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 mt-3">Finish</button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+const form = document.getElementById("detailsForm");
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  let isValid = true;
+
+  const requiredFields = ["age","gender","weight","height","activityLevel","goal"];
+
+  requiredFields.forEach(id => {
+    const field = document.getElementById(id);
+    const error = document.getElementById(id+"Error");
+
+    if(field && field.value === ""){
+      field.classList.add("is-invalid");
+      if(error){
+        error.innerText = "This field is required";
+        error.classList.remove("d-none");
+      }
+      isValid = false;
+    } else {
+      field.classList.remove("is-invalid");
+      if(error) error.classList.add("d-none");
+    }
+  });
+
+  if(isValid){
+
+    // Save all data
+    localStorage.setItem("age", age.value);
+    localStorage.setItem("gender", gender.value);
+    localStorage.setItem("weight", weight.value);
+    localStorage.setItem("height", height.value);
+    localStorage.setItem("healthIssues", healthIssues.value);
+    localStorage.setItem("allergies", allergies.value);
+    localStorage.setItem("activityLevel", activityLevel.value);
+    localStorage.setItem("goal", goal.value);
+    localStorage.setItem("targetArea", targetArea.value);
+    localStorage.setItem("foodType", foodType.value);
+    localStorage.setItem("foodDislikes", foodDislikes.value);
+
+    localStorage.setItem("isLoggedIn","true");
+
+    window.location.href = "dashboard.html";
+  }
+});
+</script>
+
+</body>
+</html>

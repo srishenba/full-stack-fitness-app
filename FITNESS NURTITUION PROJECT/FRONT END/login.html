@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | MEAL MOVE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- 🔝 Same Navbar -->
+<nav class="navbar navbar-light shadow-sm">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <img src="./Assets/download (1).png" alt="MEALMOVE Logo">
+      <span class="fw-bold logo-text">MEAL MOVE</span>
+    </a>
+
+    <!-- Sign Up Button -->
+    <a href="signup.html" class="btn btn-light btn-sm text-primary">Sign Up</a>
+
+  </div>
+</nav>
+
+<!-- Login Section -->
+<div class="container d-flex justify-content-center align-items-center" style="height: 85vh;">
+  <div class="shadow p-4 rounded-4 bg-white" style="width: 360px;">
+
+    <h5 class="text-center fw-bold mb-3">Welcome Back 💪</h5>
+
+    <form id="loginForm" novalidate>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <input type="text" id="email" class="form-control" placeholder="Enter your email">
+        <div class="text-danger small mt-1 d-none" id="emailError"></div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <!-- Password -->
+<div class="mb-3">
+
+  <!-- Password -->
+<div class="mb-3">
+
+  <div class="input-group">
+    <input type="password" id="password" class="form-control" placeholder="Enter your password">
+    <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">
+      <i class="bi bi-eye" id="eyeIcon"></i>
+    </button>
+  </div>
+
+  <!-- Forgot Password Center Below -->
+  <div class="mt-2 text-center">
+    <a href="#" class="small text-decoration-none text-primary">
+      Forgot Password?
+    </a>
+  </div>
+
+  <div class="text-danger small mt-1 d-none text-center" id="passwordError"></div>
+
+</div>
+
+  <div class="text-danger small mt-1 d-none" id="passwordError"></div>
+
+</div>
+
+        <div class="text-danger small mt-1 d-none" id="passwordError"></div>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Login</button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const form = document.getElementById("loginForm");
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  const emailError = document.getElementById("emailError");
+  const passwordError = document.getElementById("passwordError");
+
+  window.togglePassword = function () {
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    if (password.type === "password") {
+      password.type = "text";
+      eyeIcon.classList.remove("bi-eye");
+      eyeIcon.classList.add("bi-eye-slash");
+    } else {
+      password.type = "password";
+      eyeIcon.classList.remove("bi-eye-slash");
+      eyeIcon.classList.add("bi-eye");
+    }
+  };
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailError.classList.add("d-none");
+    passwordError.classList.add("d-none");
+    email.classList.remove("is-invalid");
+    password.classList.remove("is-invalid");
+
+    let isValid = true;
+
+    if (email.value.trim() === "") {
+      emailError.innerText = "Email is required";
+      emailError.classList.remove("d-none");
+      email.classList.add("is-invalid");
+      isValid = false;
+    }
+
+    if (password.value.trim() === "") {
+      passwordError.innerText = "Password is required";
+      passwordError.classList.remove("d-none");
+      password.classList.add("is-invalid");
+      isValid = false;
+    }
+
+    if (isValid) {
+      localStorage.setItem("isLoggedIn", "true");
+      window.location.href = "dashboard.html";
+    }
+
+  });
+
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+/* Full Page Background */
+body {
+  min-height: 100vh;
+  background: linear-gradient(#F1F5F9); /* soft classy bg */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Full width MEAL MOVE Navbar */
+.meal-navbar {
+  background: linear-gradient(135deg, #0F766E, #34D399);
+  padding: 10px 16px;
+}
+
+/* Logo */
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-text {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Center Login Card */
+.login-container {
+  min-height: calc(100vh - 64px);
+}
+
+/* Login Card */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: #ffffff;
+}
+
+/* Links */
+.forgot-link,
+.signup-link {
+  text-decoration: none;
+  font-weight: 500;
+  color: #0F766E;
+}
+
+.forgot-link:hover,
+.signup-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | MEAL MOVE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f5f7fa;
+    }
+    .meal-navbar {
+      background: #198754;
+    }
+    .meal-navbar .navbar-brand,
+    .meal-navbar .btn {
+      color: #fff;
+    }
+    .card {
+      border: none;
+      border-radius: 16px;
+      
+    }
+    .stat-card {
+      min-height: 130px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔝 Navbar -->
+<nav class="navbar meal-navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="index.html">MEAL MOVE</a>
+    <a href="login.html" class="btn btn-outline-light btn-sm">Logout</a>
+  </div>
+</nav>
+
+<!-- 📊 Dashboard Content -->
+<div class="container my-4">
+
+  <!-- 👤 Welcome -->
+  <h4 class="mb-4">Welcome, <span id="username">User</span> 👋</h4>
+
+  <!-- ⚖️ Stats Row -->
+  <div class="row g-3 mb-3">
+    <div class="col-md-4">
+      <div class="card stat-card shadow-sm p-3">
+        <h6>⚖️ Weight & Height</h6>
+        <p class="mb-1">Weight: <strong id="weight">70 kg</strong></p>
+        <p class="mb-0">Height: <strong id="height">170 cm</strong></p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card stat-card shadow-sm p-3">
+        <h6>📊 BMI</h6>
+        <h3 class="text-success mb-0" id="bmi">24.2</h3>
+        <small class="text-muted">Normal Range</small>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card stat-card shadow-sm p-3">
+        <h6>📈 Progress</h6>
+        <p class="mb-1">This Week</p>
+        <div class="progress">
+          <div class="progress-bar bg-success" style="width: 60%">60%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🍽️ Meal & 🏃 Activity -->
+  <div class="row g-3">
+
+    <!-- 🍽️ Today Meal Plan -->
+    <div class="col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>🍽️ Today’s Meal Plan</h6>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Breakfast: Oats + Fruits</li>
+          <li class="list-group-item">Lunch: Rice + Veg Curry</li>
+          <li class="list-group-item">Snack: Nuts / Fruits</li>
+          <li class="list-group-item">Dinner: Roti + Paneer</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 🏃 Activity Goal -->
+    <div class="col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>🏃 Today’s Activity Goal</h6>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">🚶 Walk: 6,000 Steps</li>
+          <li class="list-group-item">🏋️ Workout: 20 mins Cardio</li>
+          <li class="list-group-item">🧘 Stretching: 10 mins</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- JS (Optional: later data connect) -->
+<script>
+  // Example: Later connect with signup data
+  // document.getElementById("username").innerText = localStorage.getItem("name") || "User";
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* Persuasive Full-Width Antigravity Navbar Styles */
+
+.ag-global-navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ag-global-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #008080; /* Teal blue background as requested */
+  padding: 1rem 3rem;
+  border-radius: 0 0 16px 16px; /* Rounded bottom edges for modern look */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Soft shadow underneath */
+  transition: all 0.4s ease;
+  min-height: 80px;
+}
+
+.ag-global-navbar-wrapper:hover .ag-global-navbar {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Left Side - Brand Logo & Name */
+.ag-brand-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.ag-brand-logo {
+  height: 48px; /* Large and clear logo */
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ag-brand-section:hover .ag-brand-logo {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.ag-brand-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800; /* Bold */
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.ag-brand-section:hover .ag-brand-text {
+  opacity: 0.9;
+}
+
+/* Right Side Minimal Tools */
+.ag-nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ag-desktop-auth {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ag-hamburgers {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ag-tool-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ag-tool-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+/* Base Nav Items */
+.ag-nav-item {
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-weight: 500; /* Medium weight */
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+}
+
+.ag-nav-item:hover, .ag-nav-item.active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Signup & Logout Bold Buttons */
+.ag-nav-btn-signup, .ag-nav-btn-logout {
+  font-family: 'Montserrat', sans-serif;
+  background: #ffffff;
+  color: #008080;
+  padding: 0.6rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.ag-nav-btn-signup:hover, .ag-nav-btn-logout:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Controls */
+.ag-mobile-toggle {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ag-mobile-toggle:hover {
+  background: #006666;
+  transform: scale(1.05);
+}
+
+/* Mobile Menu Container */
+.ag-mobile-menu {
+  position: absolute;
+  top: 6rem;
+  left: 5%; right: 5%;
+  background: rgba(0, 128, 128, 0.98);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ag-mobile-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #ffffff;
+  background: transparent;
+  transition: all 0.2s ease;
+  border: none;
+  width: 100%;
+}
+
+.ag-mobile-nav-item:hover, .ag-mobile-nav-item.active {
+  background: #006666;
+  transform: scale(1.02);
+}
+
+.ag-mobile-nav-btn {
+  background: #ffffff;
+  color: #008080;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.ag-mobile-nav-btn:hover {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+/* Media Queries */
+@media (max-width: 1023px) {
+  .ag-desktop-auth {
+    display: none;
+  }
+  .ag-global-navbar {
+    padding: 1rem 1.5rem;
+  }
+  .ag-brand-logo {
+    height: 40px;
+  }
+  .ag-brand-text {
+    font-size: 1.3rem;
+  }
+  .ag-nav-tools {
+    gap: 0.5rem;
+  }
+}

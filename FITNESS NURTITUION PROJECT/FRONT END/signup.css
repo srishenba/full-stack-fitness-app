@@ -1,0 +1,53 @@
+:root {
+  --primary: #0F766E;
+  --bg: #F7FDF9;
+  --text-dark: #052E2B;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(135deg, #0F766E, #34D399);
+  padding: 8px 16px;
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+}
+
+.logo-text {
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Signup */
+.signup-wrapper {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.google-btn {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
