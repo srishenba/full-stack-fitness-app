@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema({
   // Basic Information
@@ -39,7 +39,11 @@ const UserSchema = new mongoose.Schema({
   workoutPreference: { type: String },
   targetWeight: { type: Number },
 
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  fcmToken: { type: String }, // For Push Notifications
+  resetPasswordToken: { type: String },
+  resetPasswordExpire: { type: Date }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
+export default User;

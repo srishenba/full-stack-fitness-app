@@ -1,12 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import video1 from '../assets/video.1.mp4';
+import video2 from '../assets/video.2.mp4';
+import video3 from '../assets/video.3.mp4';
+import video4 from '../assets/video.4.mp4';
 import './VideoCarousel.css';
 
 const videos = [
-  { id: 1, src: '/assests/video.1.mp4', title: 'Nourish Your Body' },
-  { id: 2, src: '/assests/video.2.mp4', title: 'Energizing Freshness' },
-  { id: 3, src: '/assests/video.3.mp4', title: 'Precision Prep' },
-  { id: 4, src: '/assests/video.4.mp4', title: 'Healthy Lifestyle' },
+  { id: 1, src: video1, title: 'Nourish Your Body' },
+  { id: 2, src: video2, title: 'Energizing Freshness' },
+  { id: 3, src: video3, title: 'Precision Prep' },
+  { id: 4, src: video4, title: 'Healthy Lifestyle' },
 ];
 
 const VideoCarousel = () => {

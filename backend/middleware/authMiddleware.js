@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 const authMiddleware = (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
@@ -8,12 +8,12 @@ const authMiddleware = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded.userId;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'mealmove_default_secret');
+    req.user = decoded.id || decoded.userId; // Support both for safety
     next();
   } catch (err) {
     res.status(401).json({ message: 'Token is not valid' });
   }
 };
 
-module.exports = authMiddleware;
+export default authMiddleware;

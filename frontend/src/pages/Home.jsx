@@ -11,6 +11,7 @@ import video2 from '../assets/video.2.mp4';
 import video3 from '../assets/video.3.mp4';
 import video4 from '../assets/video.4.mp4';
 import dashboardPreview from '../assets/dashboard_preview.png';
+import api from '../services/api';
 
 const slides = [
   {
@@ -147,46 +148,20 @@ const HomePage = () => {
     setLoading(true);
     setAiResponse("");
 
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-    if (!apiKey || apiKey === "YOUR_GEMINI_API_KEY") {
-      setAiResponse("API Key is missing. Please update your .env file.");
-      setLoading(false);
-      return;
-    }
-
     try {
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            contents: [
-              {
-                parts: [{ text: aiInput }]
-              }
-            ]
-          })
-        }
-      );
+      const response = await api.post('/api/ai/chat', { message: aiInput });
+      const data = response.data;
 
-      const data = await res.json();
-      console.log("Gemini API Response:", data);
-
-      if (data.error) {
-        setAiResponse(`API Error: ${data.error.message || "Unknown error"}`);
-      } else {
-        const output =
-          data.candidates?.[0]?.content?.parts?.[0]?.text ||
-          "No response from AI. The model might have blocked the input or output.";
-        setAiResponse(output);
+      if (data.reply) {
+        setAiResponse(data.reply);
         setAiInput("");
+      } else {
+        setAiResponse("No response from AI. Please try again later.");
       }
     } catch (err) {
-      console.error("Fetch Error:", err);
-      setAiResponse("Something went wrong with the network request. Try again.");
+      console.error("AI Assistant Error:", err);
+      const errorMessage = err.response?.data?.error || "Something went wrong with the AI request. Try again.";
+      setAiResponse(errorMessage);
     }
 
     setLoading(false);
@@ -226,7 +201,13 @@ const HomePage = () => {
     // Ensure the current video plays if isPlaying is true
     const video = videoRefs.current[currentSlide];
     if (video && isPlaying) {
-      video.play().catch(e => console.log("Autoplay prevented:", e));
+      video.muted = true; // Ensure muted to satisfy autoplay policy
+      video.playsInline = true;
+      video.play().catch(e => {
+        if (e.name !== 'AbortError') {
+          console.log("Autoplay context:", e);
+        }
+      });
     }
   }, [currentSlide, isPlaying]);
 
@@ -281,15 +262,10 @@ const HomePage = () => {
                   {slides[currentSlide].subtitle}
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-6">
-                  <Link to="/signup">
+                  <Link to="/signup" className="w-full sm:w-auto">
                     <button className="group relative bg-green-500 text-black font-black uppercase tracking-widest text-sm md:text-lg px-10 py-5 rounded-full overflow-hidden shadow-[0_10px_30px_rgba(34,197,94,0.4)] hover:shadow-[0_15px_40px_rgba(34,197,94,0.6)] hover:-translate-y-1 active:translate-y-0 active:scale-95 transition-all duration-300 w-full sm:w-auto">
                       <span className="relative z-10">Start Now</span>
                       <div className="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 ease-out group-hover:scale-100 group-hover:bg-green-400 z-0"></div>
-                    </button>
-                  </Link>
-                  <Link to="/login" className="w-full sm:w-auto">
-                    <button className="group relative bg-transparent border-2 border-white/20 hover:border-green-500/50 text-white font-black uppercase tracking-widest text-sm md:text-lg px-10 py-5 rounded-full overflow-hidden transition-all duration-300 w-full">
-                      <span className="relative z-10 group-hover:text-green-400 transition-colors">Sign In</span>
                     </button>
                   </Link>
                 </div>
@@ -504,8 +480,8 @@ const HomePage = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center relative z-10"
         >
-          <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tight mb-4 text-center">AI Assistant</h2>
-          <p className="text-lg text-gray-400 mb-10 text-center mx-auto max-w-2xl">Ask anything about fitness, nutrition, and health</p>
+          <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tight mb-4 text-center">Smart Doubt Solver</h2>
+          <p className="text-lg text-gray-400 mb-10 text-center mx-auto max-w-2xl">Real-time doubt solving & intelligent search assistant</p>
 
           <div className="bg-white/5 backdrop-blur-md rounded-[16px] p-8 md:p-12 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] max-w-2xl mx-auto overflow-hidden">
             <div className="flex flex-col gap-6">
@@ -513,7 +489,7 @@ const HomePage = () => {
                 type="text"
                 value={aiInput}
                 onChange={(e) => setAiInput(e.target.value)}
-                placeholder="Ask something (e.g., best diet for weight loss)"
+                placeholder="Type your fitness or diet question..."
                 className="w-full bg-white/5 border border-white/10 rounded-full py-4 px-6 text-white text-lg focus:outline-none focus:border-green-500/50 transition-all placeholder:text-gray-500 text-center"
                 onKeyPress={(e) => {
                   if (e.key === 'Enter') askAI();
@@ -526,7 +502,7 @@ const HomePage = () => {
                 disabled={loading}
                 className="bg-green-500 text-black font-black uppercase tracking-widest py-4 px-8 rounded-full shadow-[0_10px_30px_rgba(34,197,94,0.3)] hover:shadow-[0_20px_40px_rgba(34,197,94,0.5)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? "Thinking..." : "Ask AI"}
+                {loading ? "Searching..." : "Solve Doubt"}
               </motion.button>
 
               <div className="mt-4 flex flex-col items-center">
@@ -546,9 +522,17 @@ const HomePage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-4 p-6 rounded-xl bg-white/5 border border-white/10 w-full text-left"
                   >
-                    <p className="text-green-400 whitespace-pre-wrap leading-relaxed">
-                      {aiResponse}
-                    </p>
+                    <div className="text-green-400 whitespace-pre-wrap leading-relaxed divide-y divide-white/10">
+                      {aiResponse.split('\n\n').map((chunk, index) => {
+                        if (chunk.startsWith('Answer:')) {
+                           return <div key={index} className="pb-4"><span className="text-sm font-black text-green-300 uppercase block mb-1">Answer:</span> {chunk.replace('Answer:', '').trim()}</div>;
+                        }
+                        if (chunk.startsWith('Explanation:')) {
+                           return <div key={index} className="pt-4"><span className="text-sm font-black text-blue-400 uppercase block mb-1">Explanation:</span> {chunk.replace('Explanation:', '').trim()}</div>;
+                        }
+                        return <p key={index} className={index > 0 ? "pt-4" : ""}>{chunk}</p>;
+                      })}
+                    </div>
                   </motion.div>
                 )}
               </div>
@@ -659,7 +643,13 @@ const HomePage = () => {
               AI-powered fitness and nutrition tracking platform designed to help you stay healthy and consistent.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 border border-white/10 hover:text-green-400 hover:border-green-400/50 hover:scale-110 transition-all duration-300 ease-in-out">
+              <a 
+                href="https://www.instagram.com/meal_move26/?utm_source=ig_web_button_share_sheet" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 border border-white/10 hover:text-green-400 hover:border-green-400/50 hover:scale-115 hover:shadow-[0_0_20px_rgba(34,197,94,0.6)] transition-all duration-300 ease-in-out cursor-pointer"
+                aria-label="Instagram"
+              >
                 <Instagram size={20} />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 border border-white/10 hover:text-green-400 hover:border-green-400/50 hover:scale-110 transition-all duration-300 ease-in-out">

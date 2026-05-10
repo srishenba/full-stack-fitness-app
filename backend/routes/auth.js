@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import multer from 'multer';
+import path from 'path';
+import { signup, signin, forgotPassword, resetPassword } from '../controllers/authController.js';
+
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-const { signup, signin } = require('../controllers/authController');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -23,6 +24,8 @@ router.post('/signup', upload.fields([
 ]), signup);
 
 router.post('/signin', signin);
+router.post('/forgot-password', forgotPassword);
+router.post('/reset-password/:token', resetPassword);
 router.post('/login', signin); // Alias for compatibility
 
-module.exports = router;
+export default router;

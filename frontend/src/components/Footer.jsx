@@ -83,7 +83,15 @@ const Footer = () => {
         </p>
         <div className="ag-footer-socials">
           <a href="#twitter" aria-label="Twitter" className="ag-social-icon"><Twitter size={20} /></a>
-          <a href="#instagram" aria-label="Instagram" className="ag-social-icon"><Instagram size={20} /></a>
+          <a 
+            href="https://www.instagram.com/meal_move26/?utm_source=ig_web_button_share_sheet" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Instagram" 
+            className="ag-social-icon ag-instagram-icon"
+          >
+            <Instagram size={20} />
+          </a>
           <a href="#facebook" aria-label="Facebook" className="ag-social-icon"><Facebook size={20} /></a>
         </div>
       </div>

@@ -186,13 +186,12 @@ const Login = () => {
             )}
             {/* Forgot Password Link */}
             <div className="flex justify-end mt-1 px-1">
-              <button
-                type="button"
-                onClick={() => toast('Password reset feature coming soon!', { icon: '🔐' })}
+              <Link
+                to="/forgot-password"
                 className="text-teal-400/70 hover:text-teal-300 text-[10px] font-bold uppercase tracking-widest transition-colors hover:underline underline-offset-2"
               >
                 Forgot Password?
-              </button>
+              </Link>
             </div>
             {error && (
               <motion.p 

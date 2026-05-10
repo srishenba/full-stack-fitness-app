@@ -240,6 +240,12 @@
   color: #ffffff;
 }
 
+.ag-instagram-icon:hover {
+  transform: translateY(-6px) scale(1.15);
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.6), 0 10px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
 /* Responsive Scaling */
 @media (max-width: 1023px) {
   .ag-footer-container {

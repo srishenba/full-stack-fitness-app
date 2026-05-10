@@ -5,7 +5,14 @@ import PageLoader from './ui/PageLoader';
 
 export default function ProtectedRoute({ children }) {
   const { token, loading } = useAuth();
-  if (loading) return <PageLoader />;
-  if (!token) return <Navigate to="/login" replace />;
+  
+  if (loading) {
+    return <PageLoader />;
+  }
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
   return children;
 }

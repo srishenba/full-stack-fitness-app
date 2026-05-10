@@ -8,16 +8,13 @@ import ApiConfigurator from './components/ApiConfigurator';
 import App from './App.jsx';
 import './index.css';
 
-// Service Worker Registration for PWA - Unregistering to prevent cache/routing issues
+// Service Worker Registration for push notifications
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.getRegistrations().then((registrations) => {
-      for (let registration of registrations) {
-        registration.unregister();
-      }
-      console.log('SW: Service Workers unregistered to prevent cache issues.');
+    navigator.serviceWorker.register('/firebase-messaging-sw.js').then((registration) => {
+      console.log('SW: Firebase Messaging Service Worker registered successfully:', registration.scope);
     }).catch((error) => {
-      console.error('SW: Service Worker unregistration failed:', error);
+      console.error('SW: Firebase Messaging Service Worker registration failed:', error);
     });
   });
 }
@@ -58,7 +55,7 @@ window.showInstallPrompt = () => {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <LoadingProvider>
         <AuthProvider>
           <ApiConfigurator />

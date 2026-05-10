@@ -10,6 +10,11 @@ const Login = lazy(() => import('./pages/Login'));
 const Signup = lazy(() => import('./pages/Signup'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const AICoach = lazy(() => import('./pages/AICoach'));
+const AIAnalysis = lazy(() => import('./pages/AIAnalysis'));
+const AddMeal = lazy(() => import('./pages/AddMeal'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
+const ProgressReport = lazy(() => import('./pages/ProgressReport'));
 
 const App = () => {
   return (
@@ -17,10 +22,8 @@ const App = () => {
       <GlobalLoadingOverlay />
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          {/* Home is independent of Layout */}
           <Route path="/" element={<Home />} />
-          
-          {/* All other routes wrapped in Layout */}
+
           <Route
             path="/*"
             element={
@@ -28,6 +31,7 @@ const App = () => {
                 <Routes>
                   <Route path="login" element={<Login />} />
                   <Route path="signup" element={<Signup />} />
+                  
                   <Route
                     path="dashboard"
                     element={
@@ -36,6 +40,25 @@ const App = () => {
                       </ProtectedRoute>
                     }
                   />
+
+                  <Route
+                    path="ai-analysis"
+                    element={
+                      <ProtectedRoute>
+                        <AIAnalysis />
+                      </ProtectedRoute>
+                    }
+                  />
+
+                  <Route
+                    path="add-meal"
+                    element={
+                      <ProtectedRoute>
+                        <AddMeal />
+                      </ProtectedRoute>
+                    }
+                  />
+
                   <Route
                     path="ai-coach"
                     element={
@@ -44,6 +67,19 @@ const App = () => {
                       </ProtectedRoute>
                     }
                   />
+
+                  <Route
+                    path="progress-report"
+                    element={
+                      <ProtectedRoute>
+                        <ProgressReport />
+                      </ProtectedRoute>
+                    }
+                  />
+
+                  <Route path="forgot-password" element={<ForgotPassword />} />
+                  <Route path="reset-password/:token" element={<ResetPassword />} />
+
                   <Route path="ai" element={<Navigate to="/ai-coach" replace />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
