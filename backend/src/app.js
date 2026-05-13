@@ -10,11 +10,10 @@ const __dirname = path.dirname(__filename);
 
 
 import aiRoutes from "./routes/aiRoutes.js";
-import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/user.js";
-import stepRoutes from "./routes/stepRoutes.js";
+import authRoutes from "../routes/auth.js";
+import userRoutes from "../routes/user.js";
+import stepRoutes from "../routes/stepRoutes.js";
 import goalRoutes from "./routes/goalRoutes.js";
-
 
 // Load env
 dotenv.config();
