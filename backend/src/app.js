@@ -9,10 +9,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
-import aiRoutes from "./routes/aiRoutes.js"; // if inside src
-import authRoutes from "../routes/auth.js";
-import userRoutes from "../routes/user.js";
-import stepRoutes from "../routes/stepRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/user.js";
+import stepRoutes from "./routes/stepRoutes.js";
 import goalRoutes from "./routes/goalRoutes.js";
 
 
